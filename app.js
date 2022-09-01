@@ -36,13 +36,6 @@ app.listen(port, () => {
   console.log(`Server is running at: ${port}`);
 });
 
-//Routes
-
-app.post("/addUser", signup)
-app.post("/signin", signin)
-app.get("/userData", getUser)
-app.post("/updateUser", updateUser)
-
 // Deployment
 
 __dirname=path.resolve();
@@ -53,3 +46,12 @@ app.use(express.static("client/build"))
     res.send("Api is running...")
   })
 }
+
+//Routes
+
+app.post("/addUser", signup)
+app.post("/signin", signin)
+app.get("/userData", getUser)
+app.post("/updateUser", updateUser)
+app.get("*", (req, res) => res.redirect("/"))
+
